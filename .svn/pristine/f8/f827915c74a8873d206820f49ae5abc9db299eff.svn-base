@@ -1,0 +1,71 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('Goods/goods_list')}">商品列表</a></li>
+			<li><a href="{:U('Goods/add_goods')}">添加商品</a></li>
+		</ul>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th>商品名称</th>
+					<th>商品分类</th>
+					<th>商品单价区间(元)</th>
+					<th>二人拼团价区间(元)</th>
+					<th>四人拼团价区间(元)</th>
+					<th>推荐商品</th>
+					<th>sku商品</th>
+					<th>状态</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<volist name="goods_list" id="goods_info">
+				<tr>
+					<td><img src="/data/upload/{$goods_info.goods_img1}" height="50" width="50"/>{$goods_info.goods_name}</td>
+					<td>{$goods_class[$goods_info[goods_class]]}</td>
+					<td>{$goods_info.price_area}</td>
+					<td>{$goods_info.price_2_area}</td>
+					<td>{$goods_info.price_4_area}</td>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="#" onclick="add_recommend_goods({$goods_info['spu_id']})">添加|编辑</a>
+						<a href="{:U('Goods/get_recommend_list?spu_id='.$goods_info[spu_id])}">查看</a>
+					</td>
+					<td>
+						<a href="{:U('Goods/edit_sku?spu_id='.$goods_info[spu_id])}">编辑</a>
+					</td>
+					<td>
+						<if condition="$goods_info.state eq 1">
+							上架
+						<elseif condition="$goods_info.state eq 2" />
+							下架
+						</if>
+					</td>
+					<td>
+						<a href="{:U('Goods/goods_info?spu_id='.$goods_info[spu_id])}">查看</a> &nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="{:U('Goods/edit_goods_spu?spu_id='.$goods_info[spu_id])}">编辑</a>
+					</td>
+				</tr>
+				</volist>
+			</tbody>
+		</table>
+		<div class="pagination">{$page_show}</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script src="__PUBLIC__/js/layer/layer.js"></script>
+	<script>
+		function add_recommend_goods(spu_id){
+			var url = "{:U('Goods/recommend_goods')}&spu_id="+spu_id;
+			layer.open({
+				type:2,
+				title:"推荐商品",
+				area:['700px','450px'],
+				fixed:false,
+				maxmin:true,
+				content:url
+			});
+		}
+	</script>
+</body>
+</html>

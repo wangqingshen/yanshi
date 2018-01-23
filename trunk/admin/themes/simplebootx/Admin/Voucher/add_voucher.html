@@ -1,0 +1,122 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('Voucher/voucher_list')}">优惠券列表</a></li>
+			<li class="active"><a href="#">添加优惠券</a></li>
+		</ul>
+		<div>
+			<form id="voucher_form" class="form-horizontal" method="post" action="{:U('Voucher/add_voucher_post')}">
+				<fieldset>
+					<div class="control-group">
+						<label class="control-label"><span style="color: red">*</span>优惠券名称:</label>
+						<div class="controls">
+							<input type="text" name="voucher_name" id="voucher_name" />
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label"><span style="color: red">*</span>优惠券类型:</label>
+						<div class="controls">
+							<input type="radio" name="voucher_type" value="1" checked/>全场&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" name="voucher_type" value="2"/>指定商品
+						</div>
+					</div>
+                    <div class="control-group" style="display: none" id="select_goods_div">
+                        <label class="control-label"><span style="color: red">*</span>绑定商品:</label>
+                        <div class="controls">
+                            <input type="button" id="select_goods" value="选择商品"/>
+                        </div>
+						<div class="controls">
+							<table class="table table-hover table-bordered">
+								<thead>
+									<th>商品名称</th>
+									<th>操作</th>
+								</thead>
+								<tbody id="select_table">
+								</tbody>
+							</table>
+
+						</div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label"><span style="color: red">*</span>优惠券面值:</label>
+                        <div class="controls">
+                            <input style="width: 100px;" type="text" name="voucher_price" id="voucher_price" value=""/>元
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label"><span style="color: red">*</span>有效期:</label>
+                        <div class="controls">
+                            <input class="js-date" type="text" id="start_time" name="start_time" style="width: 100px;" value="">至
+                            <input class="js-date" type="text" id="end_time" name="end_time" style="width: 100px;" value="">
+                        </div>
+                    </div>
+
+
+				</fieldset>
+				<div class="form-actions">
+					<button type="submit" class="btn btn-primary js-ajax-submit" id="submit_btn">创建</button>
+				</div>
+
+			</form>
+		</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script src="__PUBLIC__/js/validate.js"></script>
+	<script src="__PUBLIC__/js/layer/layer.js"></script>
+	<script>
+		function remove_select_goods(event) {
+			$(event).parent().parent().remove();
+		}
+		$(function () {
+
+			$("input[name='voucher_type']").change(function () {
+				if($(this).val() == 2){
+					$('#select_goods_div').show();
+				}else {
+					$('#select_goods_div').hide();
+				}
+			});
+			$('#select_goods').click(function () {
+				layer.open({
+					type:2,
+					area:['700px','450px'],
+					fixed:false,
+					maxmin:true,
+					content:"{:U('Goods/select_goods_list')}"
+				});
+			})
+			$('#voucher_form').validate({
+				rules:{
+                    voucher_name:{
+						required: true,
+						maxlength: 50
+					},
+					delivery_explain:{
+						required: true,
+						maxlength: 500
+					},
+					goods_img1:{
+						required: true
+					}
+				},
+				messages:{
+                    voucher_name:{
+						required: "<span style='color: red'>优惠劵名称不能为空</span>",
+						maxlength: "<span style='color: red'>优惠劵名称的最大长度为50字</span>"
+					},
+					delivery_explain:{
+						required: "<span style='color: red'>必须填写送餐说明</span>",
+						maxlength: "<span style='color: red'>送餐说明不得超过500字</span>"
+					},
+					goods_img1:{
+						required: "<span style='color: red'>必须上传商品主图</span>",
+					}
+				}
+			});
+
+		});
+	</script>
+</body>
+</html>

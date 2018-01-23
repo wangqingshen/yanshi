@@ -1,0 +1,7 @@
+<script type="text/javascript" src="__ROOT__/application/Yanshi/Dist/js/jquery.js" ></script>
+<script type="text/javascript" src="__ROOT__/application/Yanshi/Dist/js/jquery.form.min.js" ></script>
+<script type="text/javascript" src="__ROOT__/application/Yanshi/Dist/js/aui/aui-toast.js" ></script>
+<script type="text/javascript" src="__ROOT__/application/Yanshi/Dist/js/aui/aui-dialog.js" ></script>
+<script type="text/javascript" src="__ROOT__/application/Yanshi/Dist/js/sha1.js" ></script>
+<script type="text/javascript" src="__ROOT__/application/Yanshi/Dist/js/common.js" ></script>
+<script type="text/javascript" src="__ROOT__/application/Yanshi/Dist/js/mobileSelect.js" ></script>

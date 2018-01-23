@@ -1,0 +1,258 @@
+<tc_include file="Common:head" />
+<link rel="stylesheet" type="text/css" href="__ROOT__/application/Yanshi/Dist/css/dialog.css" />
+<body class="ys-order-detail">
+	<div class="aui-content aui-margin-b-5">
+		<div class="aui-card-list">
+	        <div class="aui-card-list-header">
+	            <span class="ys-list-header">订单<span class="order_state"></span></span>
+	        </div>
+	        <div class="aui-card-list-content ys-list-middle">
+	            感谢您对餍食的支持，欢迎再次光临。
+	        </div>
+	        <div class="aui-card-list-footer">
+	        	<div class="ys-list-sh-btn aui-margin-b-10">
+	            	<img src="__ROOT__/application/Yanshi/Dist/images/yanshi/ico_service_order.png" />
+	            	<a href="tel://028-67273707" style="color: #333;">联系客服</a>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<div class="aui-content aui-margin-b-15">
+		<ul class="aui-list aui-list-in">
+	        <li class="aui-list-item ys-address-info  aui-padded-t-10 aui-padded-b-10">
+	            <div class="aui-list-item-label-icon">
+	                <img src="__ROOT__/application/Yanshi/Dist/images/yanshi/ico_shouhuo.png" class="order-address-icon" />
+	            </div>
+	            <div class="aui-list-item-inner aui-list-item-arrow">
+	                <div class="aui-list-item-title">
+	                    <p class="order-address"></p>
+	                    <p class="order-info">
+	                        <span class="order-username"></span>
+	                        <span class="order-tel"></span>
+	                    </p>
+	                </div>
+	                <div class="aui-list-item-title order-edit-address" data-url="{:U('address/oaddress')}">
+	                	修改地址
+	                </div>
+	            </div>
+	        </li> 
+	         <li class="aui-list-item  aui-padded-t-10 aui-padded-b-10 " >
+	            <div class="aui-list-item-label-icon">
+	                <img src="__ROOT__/application/Yanshi/Dist/images/yanshi/ico_time_order.png" class="order-delay-icon" />
+	            </div>
+	            <div class="aui-list-item-inner" tapmode id="delay-date">
+	                <div class="aui-list-item-title">
+	                    <p class="order-delay-text">延时送餐申请</p>
+	                    <p class="order-delay-info">
+	                        订单中的所有商品会同时延时配送
+	                    </p>
+	                </div>
+	            </div>
+	        </li>
+	        <li class="aui-list-item order-time-info" style="border-top: 1px solid #ddd;">
+		        <div class="aui-media-list-item-inner" style="width: 100%;">
+		            <div class="aui-list-item-media" style="font-size: 14px;color: #999;">
+		                配送时间
+		            </div>
+		            <div class="aui-list-item-inner aui-list-item-arrow">
+		                <div class="aui-list-item-text" style="width: 100%;">
+		                    <div class="aui-list-item-title">
+		                    </div>
+		                    <div class="aui-list-item-right" style="width: 100%;max-width: 100%;">
+		                        <!-- <div id="reserveDay" style="color: #555;">请选择送餐日期</div> -->
+		                       <input type="text" value="" id="ps-time" style="font-size: 12px;color: #333;text-align: right;" placeholder="暂无配送时间，请点击上方选择时间" />
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </li>
+	    </ul>
+	</div>
+	<div class="aui-content aui-margin-b-15">
+	    <ul class="aui-list aui-media-list ys-order-media-list">
+	         <li class="aui-list-item order-remark-info">
+	         	<div class="aui-media-list-item-inner">
+		         	<div class="aui-list-item-media order-item-media">
+	                     备注
+	                </div>
+		            <div class="aui-list-item-inner">
+		                <div class="aui-list-item-title">
+		                    <span class="order-remark"></span>
+		                </div>
+		            </div>
+	            </div>
+	        </li>
+	         <li class="aui-list-item order-time-info">
+	         	<div class="aui-media-list-item-inner">
+		         	<div class="aui-list-item-media order-item-media">
+	                     下单时间
+	                </div>
+		            <div class="aui-list-item-inner">
+		                <div class="aui-list-item-title">
+		                    <span class="order-time"></span>
+		                </div>
+		            </div>
+	            </div>
+	        </li>
+	        <li class="aui-list-item time-area-day-info">
+	         	<div class="aui-media-list-item-inner">
+		         	<div class="aui-list-item-media order-item-media" style="width: 120px;">
+	                    中午送餐时间段
+	                </div>
+		            <div class="aui-list-item-inner">
+		                <div class="aui-list-item-title">
+		                    <span class="time-area-day"></span>
+		                </div>
+		            </div>
+	            </div>
+	        </li>
+	        <li class="aui-list-item time-area-night-info">
+	         	<div class="aui-media-list-item-inner">
+		         	<div class="aui-list-item-media order-item-media" style="width: 120px;">
+	                    晚上送餐时间段
+	                </div>
+		            <div class="aui-list-item-inner">
+		                <div class="aui-list-item-title">
+		                    <span class="time-area-night"></span>
+		                </div>
+		            </div>
+	            </div>
+	        </li>
+	    </ul>
+	</div>
+<div class="copy-item aui-hide">
+    <li class="aui-list-item">
+        <div class="aui-media-list-item-inner">
+            <div class="aui-list-item-media">
+                <img src="__ROOT__/application/Yanshi/Dist/images/yanshi/jk-2.jpg" class="goods-img">
+            </div>
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-text">
+                    <div class="aui-list-item-title goods-name"></div>
+                    <div class="aui-list-item-right">￥<span class="goods-price"></span></div>
+                </div>
+                 <div class="aui-list-item-text goods_spec">
+                    
+                </div>
+                <div class="aui-list-item-text">
+                    <span class="order-num"></span>
+                    <span class="order-time"></span>
+                </div>
+                <div class="aui-list-item-text delivery_surplus">
+                       
+                </div>
+            </div>
+        </div>
+    </li>
+</div>
+	<div class="aui-content ys-order-list">
+	    <div class="aui-content order-id-container">
+	        <div class="ys-order-wrap">
+	            <span class="ys-order-icon">No.</span>
+	            <span class="ys-order-text order_sn"></span>
+	            <!-- <span class="ys-order-status">复制</span> -->
+	        </div>
+	    </div>
+	    <ul class="aui-list aui-media-list">
+	    </ul>
+	</div>
+	<div class="aui-content aui-margin-b-15 ys-pay-content">
+		<ul class="aui-list aui-media-list">
+			<!-- <li class="aui-list-item">
+		        <div class="aui-media-list-item-inner">
+		            <div class="aui-list-item-media">
+		               商品总计
+		            </div>
+		            <div class="aui-list-item-inner">
+		                <div class="aui-list-item-text">
+		                    <div class="aui-list-item-title">
+		                    </div>
+		                    <div class="aui-list-item-right">
+		                        ￥288
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </li> -->
+		    <li class="aui-list-item pt-content">
+		        <div class="aui-media-list-item-inner">
+		            <div class="aui-list-item-media">
+		               拼团优惠
+		            </div>
+		            <div class="aui-list-item-inner">
+		                <div class="aui-list-item-text">
+		                    <div class="aui-list-item-title">
+		                    </div>
+		                    <div class="aui-list-item-right ptyh-discount">
+		                        -￥<span class="pt-price"></span>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </li>
+		    <li class="aui-list-item yh-content aui-hide">
+		        <div class="aui-media-list-item-inner">
+		            <div class="aui-list-item-media">
+		               优惠券
+		            </div>
+		            <div class="aui-list-item-inner">
+		                <div class="aui-list-item-text">
+		                    <div class="aui-list-item-title">
+		                    </div>
+		                    <div class="aui-list-item-right ptyh-discount">
+		                        -￥<span class="yh-price"></span> 
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </li>
+		    <li class="aui-list-item">
+		        <div class="aui-media-list-item-inner">
+		            <div class="aui-list-item-media">
+		               实付款
+		            </div>
+		            <div class="aui-list-item-inner">
+		                <div class="aui-list-item-text">
+		                    <div class="aui-list-item-title">
+		                    </div>
+		                    <div class="aui-list-item-right">
+		                        ￥<span class="order_amount"></span>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </li>
+		</ul>
+	</div>
+	<div class="copy-pt-item aui-hide">
+		<li class="aui-list-item">
+		    <div class="aui-col-xs-2 aui-ellipsis-1 pt-name"></div>
+		    <div class="aui-col-xs-4 pt-mob"></div>
+		    <div class="aui-col-xs-4" style="color:#fa5400;">-￥<span class="pt-price"></span></div>
+		    <div class="aui-col-xs-2 pt-state"></div>
+		</li>
+	</div>
+	<div class="aui-content aui-margin-b-15 pt-content">
+	    <div class="aui-content ys-pt-container">
+	        <div class="ys-pt-header">
+	            拼团信息
+	        </div>
+	    </div>
+	    <ul class="aui-list aui-media-list pt-list">
+	    </ul>
+	</div>
+	<div class="aui-content order-sub-wrap aui-hide">
+		<div class="order-sub-btn">继续支付</div>
+		<input type="hidden" name="wx-url" value="{:U('index/wxpay')}" />
+	</div>
+</body>
+<tc_include file="Common:script" />
+<script type="text/javascript" src="__ROOT__/application/Yanshi/Dist/js/dialog.js" ></script>
+<script type="text/javascript" src="__ROOT__/application/Yanshi/Dist/js/mobile-select-date.js" ></script>
+<script type="text/javascript">
+OrderDetail.init();
+var selectDate = new MobileSelectDate();
+selectDate.init({trigger:'#ps-time',min:'2017/07/20',max:'2027/07/20',position:"bottom"});
+// selectDate.init({trigger:'#ps-time',min:'2017/07/20',max:'2027/07/20',position:"bottom", clickBtn:'#delay-date'});
+</script>
+</html>

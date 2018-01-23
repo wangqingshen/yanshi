@@ -1,0 +1,45 @@
+<tc_include file="Common:head" />
+<body class="ys-address-list">
+<div class="address-item-copy aui-hide">
+	<li class="aui-list-item">
+		<div class="aui-media-list-item-inner">
+	        <div class="aui-list-item-inner">
+	           	<div class="aui-list-item-text">
+	            	<p class="order-address"></p>
+	            </div>
+	            <div class="aui-list-item-text aui-margin-t-10">
+	             	<p class="order-info">
+	                    <span class="order-username aui-margin-r-5"></span>
+	                   	<span class="order-tel"></span>
+	                </p>
+	            </div>
+	            <div class="aui-list-item-text aui-margin-t-15 aui-padded-t-10">
+	            	<div class="aui-list-item-title">
+	                	<label class="radio-label"><input class="aui-radio" type="radio" name="is-default"><span>设为默认</span></label>
+	            	</div>
+                	<div class="aui-list-item-right">
+						<img class="edit-img" src="__ROOT__/application/Yanshi/Dist/images/yanshi/ico_edit.png" />
+						<img class="del-img" src="__ROOT__/application/Yanshi/Dist/images/yanshi/ico_delete.png" />
+               		</div>
+	        	</div>
+	    	</div>
+    	</div>
+		    
+	</li>
+</div>
+<div class="aui-content" style="margin-bottom: 75px;">
+	<ul class="aui-list aui-media-list">
+	</ul>
+</div>
+<footer class="aui-bar aui-bar-tab">
+	<button class="add-address-btn">新增地址</button>
+</footer>
+<input type="hidden" value="1" name="address-state" />
+<input type="hidden" name="add-url" value="{:U('address/add')}">
+<input type="hidden" name="edit-url" value="{:U('address/edit')}">
+</body>
+<tc_include file="Common:script" />
+<script type="text/javascript">
+    Address.init();
+</script>
+</html>

@@ -1,0 +1,48 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th>商品名称</th>
+				</tr>
+			</thead>
+			<tbody>
+				<volist name="goods_list" id="goods_info">
+				<tr>
+					<td>
+						<img src="{$goods_info.goods_img1}"  height="50" width="50" />
+						{$goods_info.goods_name}
+					</td>
+				</tr>
+				</volist>
+			</tbody>
+		</table>
+		<div class="pagination">{$page_show}</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script src="__PUBLIC__/js/layer/layer.js"></script>
+	<script>
+		function get_bind_goods_list(v_id) {
+			layer.open({
+				type:2,
+				area:['700px','450px'],
+				fixed:false,
+				maxmin:true,
+				content:"{:U('Voucher/bind_goods_list')}&vid="+v_id
+			});
+		}
+		function get_qrcode(v_id){
+            layer.open({
+                type:2,
+				title:"二维码",
+                area:['300px','300px'],
+                fixed:false,
+                maxmin:true,
+				content:"{:U('Voucher/get_voucher_qr_img')}&vid="+v_id
+            });
+		}
+	</script>
+</body>
+</html>

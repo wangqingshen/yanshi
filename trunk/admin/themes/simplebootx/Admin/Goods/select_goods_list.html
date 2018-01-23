@@ -1,0 +1,64 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th>商品名称</th>
+					<th>商品分类</th>
+					<th>商品单价区间</th>
+					<th>二人拼团价区间</th>
+					<th>四人拼团价区间</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<volist name="goods_list" id="goods_info">
+				<tr>
+					<td><img src="/data/upload/{$goods_info.goods_img1}" height="50" width="50"/>{$goods_info.goods_name}</td>
+					<td>{$goods_class[$goods_info[goods_class]]}</td>
+					<td>{$member_info.reg_time}</td>
+					<td>{$member_info.channel_name}</td>
+					<td>{$member_info.channel_name}</td>
+					<td>
+						<input type="checkbox" name="select_goods" value="{$goods_info.spu_id}|{$goods_info.goods_name}" />
+					</td>
+				</tr>
+				</volist>
+			</tbody>
+		</table>
+		<div class="pagination">{$page_show}</div>
+		<div class="pagination">
+			<input type="button" id="btn_select" value="选中">
+		</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script src="__PUBLIC__/js/layer/layer.js"></script>
+	<script>
+		$(function () {
+			$("input[name='select_goods']").click(function () {
+				var len = $("input[name='select_goods']:checked").length;
+				if(len > 5){
+					alert('最多只能选择5种商品');
+					return false;
+				}
+			});
+			$("#btn_select").click(function () {
+
+				$("input[name='select_goods']:checked").each(function () {
+					var value = $(this).val();
+					value = value.split("|");
+					var html = '<tr><input type="hidden" name="select_goods_ids[]" value="'+value[0]+'"/><td>'+value[1]+'</td><td><a href="#" onclick="remove_select_goods(this)">移除</a></td></tr>';
+					parent.$('#select_table').append(html);
+				})
+
+
+			})
+
+
+        })
+	</script>
+</body>
+</html>

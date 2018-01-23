@@ -1,0 +1,48 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('FoodDelivery/delivery_list')}">送餐地点列表</a></li>
+			<li class="active"><a href="{:U('FoodDelivery/add_delivery')}">添加送餐地点</a></li>
+		</ul>
+		<div>
+			<form id="delivery_form" class="form-horizontal" method="post" action="{:U('FoodDelivery/add_delivery_post')}">
+				<fieldset>
+					<div class="control-group">
+						<label class="control-label"><span style="color: red">*</span>送餐学校:</label>
+						<div class="controls">
+							<input type="text" name="d_name" id="d_name" />
+						</div>
+					</div>
+				</fieldset>
+				<div class="form-actions">
+					<button type="submit" class="btn btn-primary js-ajax-submit" id="submit_btn">添加</button>
+				</div>
+
+			</form>
+		</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script src="__PUBLIC__/js/validate.js"></script>
+	<script>
+		$(function () {
+			$('#delivery_form').validate({
+				rules: {
+					d_name: {
+						required: true,
+						maxlength: 20
+					}
+				},
+				messages: {
+					d_name: {
+						required: "<span style='color: red'>送餐学校不能为空</span>",
+						maxlength: "<span style='color: red'>最大长度为20字</span>"
+
+					}
+				}
+			});
+		});
+	</script>
+</body>
+</html>

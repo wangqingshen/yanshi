@@ -1,0 +1,65 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('Goods/goods_list')}">商品列表</a></li>
+			<li class="active"><a href="#">sku商品列表</a></li>
+		</ul>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th>sku名称</th>
+					<th>商品单价</th>
+					<th>二人拼团价</th>
+					<th>四人拼团价</th>
+					<th>送餐次数</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<volist name="sku_list" id="sku_info">
+				<tr>
+					<td>{$sku_info.spec}</td>
+					<td><input type="text" name="sku_price" value="{$sku_info.sku_price}" onchange="edit_sku_info(1,{$sku_info.sku_id},this)" /></td>
+					<td><input type="text" name="sku_2_price" value="{$sku_info.sku_2_price}" onchange="edit_sku_info(2,{$sku_info.sku_id},this)" /></td>
+					<td><input type="text" name="sku_4_price" value="{$sku_info.sku_4_price}" onchange="edit_sku_info(3,{$sku_info.sku_id},this)" /></td>
+					<td><input type="text" name="delivery_num" value="{$sku_info.delivery_num}" onchange="edit_sku_info(4,{$sku_info.sku_id},this)" /></td>
+					<td>
+						<a href="{:U('Goods/del_sku?sku_id='.$sku_info[sku_id])}">删除</a>
+					</td>
+				</tr>
+				</volist>
+			</tbody>
+		</table>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script>
+		 function edit_sku_info(type,sku_id,event) {
+		     var value = $(event).val();
+		     if(value==''||value==undefined){
+		         alert('数据不能为空');
+		         return false;
+			 }
+			 var data = "sku_id="+sku_id+"&val="+value+"&type="+type;
+             if(confirm("确定修改sku商品信息？")){
+                 var url = "{:U('Goods/edit_sku_post')}";
+                 $.ajax({
+                     url:url,
+                     data:data,
+                     success:function(data){
+                         if(data.errcode == 1){
+                             alert('修改成功');
+                             location.href = location.href;
+                         }else{
+                             alert('修改失败');
+                             return;
+                         }
+                     }
+                 });
+             }
+
+         }
+	</script>
+</body>
+</html>

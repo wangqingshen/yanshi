@@ -1,0 +1,72 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/> 
+    <title>餍食微信支付</title>
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		ul,ol{list-style:none;}
+		body{background:#f5f5f5;}
+		.fukuan-top{width:100%;height:auto;background:#f5f5f5;}
+		.fukuan-top .zhanghao{font-size: 16px;font-weight:normal;color:#282828;text-align:center;padding-top: 2rem;}
+		.fukuan-top .jiage{font-size:36px;text-align:center;font-weight:normal;letter-spacing:5px;padding-bottom: 1rem;}
+		.fukuan-top .shoukuan{width:100%;padding:1.3rem 0.6rem;line-height: 0.2rem;height:0.2rem;font-size:14px;color:#888;}
+		.fukuan-top .shoukuan .lef{display:inline-block;float: left;}
+		.fukuan-top .shoukuan .rig{display:inline-block;float: right;padding-right:1.3rem;}
+		.fukuan-top .btn01{width:70%;padding:0.3rem 0;display:block;background:#fe0000;text-align:center;margin:1.6rem auto;color:#fff;font-size:1.6rem;border-radius:0.2rem;line-height: 2.6rem;border:0px;}
+		.fukuan-top .btn02{width: 91%;display: block; color: #fff;border: 0px;border-radius: 3px;
+    height: 45px;line-height: 45px;background: #44bf16;text-align: center; font-size: 16px; margin: 14px auto;}
+		.stone{background:#fff;}
+	</style>
+</head>
+<body>
+	<div class="fukuan-top">
+	<h3 class="zhanghao">餍食微信商户</h3>
+	<h1 class="jiage">￥{$order_amount}</h1>
+	<div class="stone">
+		<div class="shoukuan">
+			<span class="lef">收款方</span>
+			<span class="rig">餍食</span>
+		</div>
+	</div>
+	<div align="center">
+		<button class="btn02" type="button" onclick="callpay()" >立即支付</button>
+	</div>
+	<input type="hidden" id="order-url" value="{:U('product/ordersuccess')}" />
+</div>
+<script type="text/javascript" src="__ROOT__/application/Yanshi/Dist/js/jquery.js" ></script>
+<script type="text/javascript" src="__ROOT__/application/Yanshi/Dist/js/common.js" ></script>
+    <script type="text/javascript">
+	//调用微信JS api 支付
+	function jsApiCall()
+	{
+		WeixinJSBridge.invoke(
+			'getBrandWCPayRequest',
+				{$wechat_pay_parameters},
+			function(res){
+				WeixinJSBridge.log(res.err_msg);
+				if(res.err_msg == 'get_brand_wcpay_request:ok') {
+					gotoLocation($('#order-url').val(), '&order_sn='+getParams('order_sn'));
+				}else{
+					WXpay.init();
+				}
+			}
+		);
+	}
+
+	function callpay()
+	{
+		if (typeof WeixinJSBridge == "undefined"){
+		    if( document.addEventListener ){
+		        document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+		    }else if (document.attachEvent){
+		        document.attachEvent('WeixinJSBridgeReady', jsApiCall); 
+		        document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+		    }
+		}else{
+		    jsApiCall();
+		}
+	}
+	</script>
+</body>
+</html>

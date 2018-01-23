@@ -1,0 +1,61 @@
+<tc_include file="Common:head" />
+<link rel="stylesheet" type="text/css" href="__ROOT__/application/Yanshi/Dist/css/aui/aui-pull-refresh.css" />
+<body class="ys-order-list">
+<div class="aui-tab" id="tab">
+    <div class="aui-tab-item" data-index="1"><span>待付款</span></div>
+    <div class="aui-tab-item" data-index="2"><span>已付款</span></div>
+    <div class="aui-tab-item" data-index="3"><span>配送中</span></div>
+    <div class="aui-tab-item aui-active" data-index="4"><span>已完成</span></div>
+</div>
+<div class="aui-refresh-content">
+    <div class="aui-content order-list-content ys-margin-b-50" style="margin-top: 50px;">
+    </div>
+</div>
+<div class="copy-content aui-hide">
+    <div class="aui-content aui-margin-b-15">
+    <div class="aui-content order-id-container">
+        <div class="ys-order-wrap">
+            <span class="ys-order-icon">No.</span>
+            <span class="ys-order-text order_sn"></span>
+        </div>
+    </div>
+    <ul class="aui-list aui-media-list">
+    </ul>
+    </div>
+</div>
+<div class="copy-item aui-hide">
+    <li class="aui-list-item">
+        <div class="aui-media-list-item-inner">
+            <div class="aui-list-item-media">
+                <img src="__ROOT__/application/Yanshi/Dist/images/yanshi/jk-2.jpg" class="goods-img">
+            </div>
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-text">
+                    <div class="aui-list-item-title goods-name">3日健康体检餐</div>
+                    <div class="aui-list-item-right">￥<span class="goods-price">177</span></div>
+                </div>
+                 <div class="aui-list-item-text goods_spec">
+                    大份，30天
+                </div>
+                <div class="aui-list-item-text">
+                    <span class="order-num">总送餐次数：6次</span>
+                    <span class="order-time">含中、晚餐</span>
+                </div>
+                <div class="aui-list-item-text delivery_surplus">
+                        剩余次数：2次
+                </div>
+            </div>
+        </div>
+    </li>
+</div>
+<input type="hidden" name="detail_url" value="{:U('product/orderdetail')}">
+<tc_include file="Common:script" />
+<tc_include file="Common:footer1" />
+</body>
+<script type="text/javascript" src="__ROOT__/application/Yanshi/Dist/js/aui/aui-scroll.js" ></script>
+<script type="text/javascript" src="__ROOT__/application/Yanshi/Dist/js/aui/aui-pull-refresh.js"></script>
+<script type="text/javascript">
+    var orderUrl = ["{:U('product/opendding')}", "{:U('product/opaid')}", "{:U('product/odelivery')}", "{:U('product/ocompleted')}"];
+    Order.init();
+</script>
+</html>

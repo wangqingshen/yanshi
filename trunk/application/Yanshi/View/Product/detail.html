@@ -1,0 +1,163 @@
+<tc_include file="Common:head" />
+<link rel="stylesheet" type="text/css" href="__ROOT__/application/Yanshi/Dist/css/aui/aui-slide.css" />
+</head>
+<body class="ys-product-detail">
+<!-- <header class="aui-bar aui-bar-nav aui-bar-light">
+    <a class="aui-pull-left aui-btn">
+        <span class="aui-iconfont aui-icon-left"></span>
+    </a>
+    <div class="aui-title">{$post_title}</div>
+</header> -->
+<!-- <section class="aui-content"></section> -->
+<section class="aui-content">
+	<div id="aui-slide">
+        <div class="aui-slide-wrap" >
+        </div>
+        <div class="aui-slide-page-wrap"><!--分页容器--></div>
+        <div class="icon-cart-wrapper goto-car">
+            <span class="aui-iconfont aui-icon-cart"></span>
+        </div>
+    </div>
+   <div class="aui-card-list-content ys-list-content">
+        <div class="ys-list-item-inner">
+            <div class="ys-list-item-header">
+                <div class="ys-list-item-title ys-goods-name"></div>
+            </div>
+            <div class="ys-list-item-content">
+                <div class="ys-list-item-title">
+                    <span class="ys-list-item-min-price">￥<span class="ys-goods-price"></span><em>起</em></span>
+                    <span class="ys-list-item-has-order">已预订<span class="ys-goods-count"></span>份</span>
+                </div>
+                <div class="ys-list-item-right"><span class="pt-btn">拼团价</span>￥<span class="ys-goods-price-area"></span></div>
+            </div>
+        </div>
+    </div>
+    <div class="aui-content">
+        <ul class="aui-list aui-media-list">
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-title">份量</div>
+                    <div class="aui-row aui-row-padded portion-type">
+                        
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-title">周期</div>
+                    <div class="aui-row aui-row-padded cycle-type">
+                        
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="aui-info">
+        <ul class="aui-list aui-media-list">
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner notice-wrapper">
+                    <div class="aui-list-item-title">送餐说明</div>
+                    <p class="notice-desc"></p>
+                    <!-- <p class="notice-desc">每日晚餐晚上7点之前送达</p> -->
+                </div>
+            </li>
+        </ul>
+    </div>
+    <section class="aui-content">
+        <div class="aui-card-list">
+            <div class="aui-card-list-header">
+               <!--  <i class="xq-icon"></i> -->
+                <img src="__ROOT__/application/Yanshi/Dist/images/yanshi/ico_picture.png" class="xq-icon" />
+                <span class="ys-list-header">详情</span>
+            </div>
+            <div class="ys-goods-imgs">
+               
+            </div>
+        </div>
+    </section>
+    <section class="aui-content">
+         <div class="aui-col-xs-4 addToCart">
+            <img src="__ROOT__/application/Yanshi/Dist/images/yanshi/ico_shoppingcart.png" />
+         </div>
+        <div class="aui-col-xs-4 spellDialogBtn" tapmode>一起拼</div>
+        <div class="aui-col-xs-4 reserve-btn">我要预定</div>
+    </section>
+    <div id="dialog-inner-content" class="aui-hide">
+        <div class="icon-close-wrapper dialog-exit">
+            <img src="__ROOT__/application/Yanshi/Dist/images/yanshi/ico_exit.png"/>
+        </div>
+        <div class="aui-card-list-content ys-list-content">
+            <div class="ys-list-item-inner">
+                <div class="ys-list-item-header">
+                    <img src="__ROOT__/application/Yanshi/Dist/images/yanshi/p-2.jpg" class="dialog-goods-img"/>
+                </div>
+                <div class="ys-list-item-content">
+                    <div class="ys-list-item-title">
+                        <span class="ys-list-item-min-price">￥<label class="dialog-min-price">28</label></span>
+                        <span class="pt-btn" style="float: none;">拼团价</span>
+                    </div>
+                    <div class="ys-list-item-title">已选择“<span class="dialog-sku-spec">大份，30天</span>”</div>
+                </div>
+            </div>
+        </div>
+        <div class="aui-tab dialog-tab">
+            <div class="aui-tab-item aui-active" data-num="2"><span>2人成团</span></div>
+            <div class="aui-tab-item" data-num="4"><span>4人成团</span></div>
+        </div>
+        <div class="aui-tab-content">
+            <ul class="aui-list aui-form-list">
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label">
+                            好友
+                        </div>
+                        <div class="aui-list-item-input">
+                            <input type="tel" maxlength="11" placeholder="请输入好友注册手机号">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul class="aui-list aui-form-list aui-hide">
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label">
+                            好友1
+                        </div>
+                        <div class="aui-list-item-input">
+                            <input type="tel" maxlength="11" placeholder="请输入好友注册手机号">
+                        </div>
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label">
+                            好友2
+                        </div>
+                        <div class="aui-list-item-input">
+                            <input type="tel" maxlength="11" placeholder="请输入好友注册手机号">
+                        </div>
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label">
+                            好友3
+                        </div>
+                        <div class="aui-list-item-input">
+                            <input type="tel" maxlength="11" placeholder="请输入好友注册手机号">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+   </div>
+   <input type="hidden" name="addToCartUrl" value="{:U('shoppingCar/index')}" />
+   <input type="hidden" name="reserveUrl" value="{:U('product/reserve')}" />
+</section>
+</body>
+<tc_include file="Common:script" />
+<script type="text/javascript" src="__ROOT__/application/Yanshi/Dist/js/aui/aui-slide.js"></script>
+<script type="text/javascript">
+GoodsDetail.init();
+</script>
+</html>

@@ -1,0 +1,69 @@
+<tc_include file="Common:head" />
+<body class="ys-refund-apply">
+<div class="aui-content aui-margin-t-15">
+     <ul class="aui-list aui-list-in">
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                   订单号
+                </div>
+                <div class="aui-list-item-input">
+                    <input type="text" placeholder="申请退款的订单号">
+                    <!--  <div class="input-del-wrapper aui-margin-r-15">
+                        <img src="__ROOT__/application/Yanshi/Dist/images/yanshi/ico_delete_forms.png" class="input-del-icon"/>
+                    </div> -->
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                可退款金额
+                </div>
+                <div class="aui-list-item-input">
+                   <span class="refund-money">￥100</span>
+                    <!--  <div class="input-del-wrapper aui-margin-r-15">
+                        <img src="__ROOT__/application/Yanshi/Dist/images/yanshi/ico_delete_forms.png" class="input-del-icon"/>
+                    </div> -->
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                支付宝账号
+                </div>
+                <div class="aui-list-item-input">
+                   <input type="text" placeholder="账号">
+                    <!--  <div class="input-del-wrapper aui-margin-r-15">
+                        <img src="__ROOT__/application/Yanshi/Dist/images/yanshi/ico_delete_forms.png" class="input-del-icon"/>
+                    </div> -->
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                退款金额
+                </div>
+                <div class="aui-list-item-input">
+                   <input type="text" placeholder="不可大于可退款金额">
+                </div>
+            </div>
+        </li>
+    </ul>
+     <div class="add-address-wrapper">
+        <button data-url="{:U('address/index')}">保存</button>
+    </div>
+    <div class="aui-list-item-inner notice-wrapper">
+        <div class="aui-list-item-title">退款说明</div>
+        <p class="notice-desc">1、未送餐前：请联系客服人员进行处理。</p>
+        <p class="notice-desc">2、送餐后：如需要退货退款，务必先联系客服人员，经过在线初步确认后，由工作人员帮您办理退款。</p>
+    </div>
+</div>
+</body>
+<tc_include file="Common:script" />
+<script type="text/javascript">
+    AddAddress.init();
+</script>
+</html>

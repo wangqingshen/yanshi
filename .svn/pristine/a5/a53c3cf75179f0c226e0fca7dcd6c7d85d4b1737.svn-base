@@ -1,0 +1,58 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<div>
+
+				<fieldset>
+					<div class="control-group">
+						<label class="control-label">送餐学校:</label>
+						<input type="hidden" name="d_id" value="{$d_id}" />
+						<div class="controls">
+							{$d_name}
+						</div>
+					</div>
+					<div class="control-group">
+						<div class="controls">
+							<table class="table table-hover table-bordered">
+								<thead>
+									<th>取餐点</th>
+									<th>操作</th>
+								</thead>
+								<tbody>
+									<volist name="list" id="vo">
+										<tr>
+											<td>{$vo.name}</td>
+											<td><input type="button"  onclick="del_take_place({$vo.id})" value="删除" /></td>
+										</tr>
+									</volist>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</fieldset>
+
+		</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script src="__PUBLIC__/js/validate.js"></script>
+	<script>
+		function del_take_place(tid) {
+			var url = "{:U('FoodDelivery/del_tak_place_post')}";
+			$.ajax({
+				type: 'POST',
+				url: url,
+				data: 'tid='+tid,
+				success: function (data) {
+					if(data.errcode == 1){
+						alert('删除成功');
+					}else {
+						alert('删除失败');
+					}
+					location.href = location.href;
+				}
+			},'json');
+		}
+	</script>
+</body>
+</html>

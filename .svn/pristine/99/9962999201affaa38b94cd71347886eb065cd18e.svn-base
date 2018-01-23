@@ -1,0 +1,63 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('Voucher/voucher_list')}">优惠券列表</a></li>
+			<li><a href="{:U('Voucher/add_voucher')}">添加优惠券</a></li>
+		</ul>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th>优惠券名称</th>
+					<th>优惠金额（元）</th>
+					<th>类型</th>
+					<th>开始时间</th>
+					<th>结束时间</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<volist name="voucher_list" id="voucher_info">
+				<tr>
+					<td>{$voucher_info.voucher_name}</td>
+					<td>{$voucher_info.voucher_price}</td>
+					<if condition="$voucher_info.type eq 1">
+						<td>全场</td>
+					<elseif condition="$voucher_info.type eq 2"/>
+						<td><a href="#" onclick="get_bind_goods_list('{$voucher_info.id}')">指定商品</a></td>
+					</if>
+					<td>{$voucher_info.start_time}</td>
+					<td>{$voucher_info.end_time}</td>
+					<td><a href="#" onclick="get_qrcode('{$voucher_info[id]}')">查看二维码</a></td>
+				</tr>
+				</volist>
+			</tbody>
+		</table>
+		<div class="pagination">{$page_show}</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script src="__PUBLIC__/js/layer/layer.js"></script>
+	<script>
+		function get_bind_goods_list(v_id) {
+			layer.open({
+				type:2,
+				area:['700px','450px'],
+				fixed:false,
+				maxmin:true,
+				content:"{:U('Voucher/bind_goods_list')}&vid="+v_id
+			});
+		}
+		function get_qrcode(v_id){
+            layer.open({
+                type:2,
+				title:"二维码",
+                area:['300px','300px'],
+                fixed:false,
+                maxmin:true,
+				content:"{:U('Voucher/get_voucher_qr_img')}&vid="+v_id
+            });
+		}
+	</script>
+</body>
+</html>

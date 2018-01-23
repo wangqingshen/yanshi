@@ -1,0 +1,219 @@
+<tc_include file="Common:head" />
+<link rel="stylesheet" type="text/css" href="__ROOT__/application/Yanshi/Dist/css/dialog.css" />
+<body class="ys-reserve">
+<div class="aui-content aui-margin-b-15">
+	<ul class="aui-list aui-list-in">
+        <li class="aui-list-item ys-address-info">
+            <div class="aui-list-item-label-icon">
+                <img src="__ROOT__/application/Yanshi/Dist/images/yanshi/ico_shouhuo.png" class="order-address-icon" />
+            </div>
+            <div class="aui-list-item-inner aui-list-item-arrow address-info" data-url="{:U('address/oaddress')}">
+                <div class="aui-list-item-title">
+                    <p class="order-address"></p>
+                    <p class="order-info">
+                        <span class="order-username"></span>
+                        <span class="order-tel"></span>
+                    </p>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="copy-item aui-hide">
+<li class="aui-list-item">
+    <div class="aui-media-list-item-inner">
+        <div class="aui-list-item-media">
+            <img class="goods_img" src="__ROOT__/application/Yanshi/Dist/images/yanshi/jk-3.jpg">
+        </div>
+        <div class="aui-list-item-inner">
+            <div class="aui-list-item-text">
+                <div class="aui-list-item-title goods_name"></div>
+                <div class="aui-list-item-right">￥<span class="goods_price"></span></div>
+            </div>
+            <div class="aui-list-item-text goods_spec">
+                
+            </div>
+            <div class="aui-list-item-text delivery_num">
+            </div>
+        </div>
+    </div>
+</li>
+</div>
+<div class="aui-content aui-margin-b-15 ys-order-list ys-goods-info">
+    <div class="aui-content order-id-container">
+        <div class="ys-order-wrap">
+            <span class="ys-order-icon">No.</span>
+            <span class="ys-order-text order_sn"></span>
+        </div>
+    </div>
+    <ul class="aui-list aui-media-list">
+    </ul>
+</div>
+<div class="aui-content service-time-container">
+    <ul class="aui-list aui-media-list">
+     <li class="aui-list-item" style="background: #f5f5f5;border:none;color:#fa5400;font-size:12px;padding-right: 0.5rem;min-height: auto;padding-bottom: 0.5rem;">
+        温馨提示：亲，初次预定时务必选好送餐日期和送餐时间段哟
+    </li>
+    <li class="aui-list-item delivery-day-item">
+        <div class="aui-media-list-item-inner">
+            <div class="aui-list-item-media">
+                送餐时间
+            </div>
+            <div class="aui-list-item-inner aui-list-item-arrow">
+                <div class="aui-list-item-text">
+                    <div class="aui-list-item-title">
+                    </div>
+                    <div class="aui-list-item-right">
+                        <!-- <div id="reserveDay" style="color: #555;">请选择送餐日期</div> -->
+                        <input type="text" id="reserveDayDate" placeholder="请选择送餐日期" readonly="readonly" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="aui-list-item delivery-day-item">
+        <div class="aui-media-list-item-inner">
+            <div class="aui-list-item-media">
+                <label ><input class="aui-radio" type="checkbox" name="delivery-time" value="1">午餐</label>
+            </div>
+            <div class="aui-list-item-inner ">
+                <div class="aui-list-item-text">
+                    <div class="aui-list-item-title">
+                    </div>
+                    <div class="aui-list-item-right">
+                
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="aui-info">
+            <div class="aui-info-item">每天中午12点前送达</div>
+        </div> -->
+    </li>
+    <li class="aui-list-item delivery-day-area aui-hide">
+        <div class="aui-media-list-item-inner">
+            <div class="aui-list-item-media">
+                午餐送餐时间段
+            </div>
+            <div class="aui-list-item-inner aui-list-item-arrow">
+                <div class="aui-list-item-text">
+                    <div class="aui-list-item-title">
+                    </div>
+                    <div class="aui-list-item-right">
+                        <select name="select-day-area" style="color: #777;">
+                            <option value="-1">请选择时间段</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="aui-list-item delivery-night-item">
+        <div class="aui-media-list-item-inner">
+            <div class="aui-list-item-media">
+                <label ><input class="aui-radio" type="checkbox" name="delivery-time" value="2">晚餐</label>
+            </div>
+            <div class="aui-list-item-inner ">
+                <div class="aui-list-item-text">
+                    <div class="aui-list-item-title">
+                    </div>
+                    <div class="aui-list-item-right">
+                
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="aui-list-item delivery-night-area aui-hide">
+        <div class="aui-media-list-item-inner">
+            <div class="aui-list-item-media">
+                晚餐送餐时间段
+            </div>
+            <div class="aui-list-item-inner aui-list-item-arrow">
+                <div class="aui-list-item-text">
+                    <div class="aui-list-item-title">
+                    </div>
+                    <div class="aui-list-item-right">
+                        <select name="select-night-area" style="color: #777;">
+                            <option value="-1">请选择时间段</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="aui-list-item coupon-area">
+        <div class="aui-media-list-item-inner">
+            <div class="aui-list-item-media">
+                优惠券
+            </div>
+            <div class="aui-list-item-inner aui-list-item-arrow">
+                <div class="aui-list-item-text">
+                    <div class="aui-list-item-title">
+                    </div>
+                    <div class="aui-list-item-right">
+                        <span class="coupon-list" style="color: #fa5400">暂无可用</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="aui-list-item">
+        <div class="aui-media-list-item-inner">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-text">
+                    <div class="aui-list-item-title">备注</div>
+                </div>
+                <div class="aui-list-item-text">
+                    <div class="f-textarea">
+                        <textarea name="" id="" placeholder="如有过敏，敬请备注" maxlength="50"></textarea>
+                        <div class="textarea-ext">50字以内</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    </ul>
+</div>
+<div class="aui-content aui-margin-b-15 ys-order-list recommend_list">
+    <ul class="aui-list aui-media-list">
+        <li class="aui-list-header"><span class="tj-header">推荐搭配</span></li>
+    </ul>
+</div>
+<div class="copy-pt-item aui-hide">
+<li class="aui-list-item">
+    <div class="aui-col-xs-2 aui-ellipsis-1 pt-name"></div>
+    <div class="aui-col-xs-4 pt-mob"></div>
+    <div class="aui-col-xs-4" style="color:#fa5400;">-￥<span class="pt-price"></span></div>
+    <div class="aui-col-xs-2 pt-state"></div>
+</li>
+</div>
+<div class="aui-content aui-margin-b-15 pt-content">
+    <div class="aui-content ys-pt-container">
+        <div class="ys-pt-header">
+            拼团信息
+        </div>
+    </div>
+    <ul class="aui-list aui-media-list pt-list">
+       
+    </ul>
+</div>
+<section class="aui-content order-pay-content">
+    <div class="aui-col-xs-8">
+        <span class="order-pay-money">￥<em class="pay-total"></em></span>
+        <span class="yh-wrapper">| 已优惠￥<em class="yh-money">0.00</em></span>
+    </div>
+    <div class="aui-col-xs-4 wx-pay">微信支付</div>
+</section>
+ <input type="hidden" name="wx-url" value="{:U('index/wxpay')}" />
+</body>
+<tc_include file="Common:script" />
+<script type="text/javascript" src="__ROOT__/application/Yanshi/Dist/js/dialog.js" ></script>
+<script type="text/javascript" src="__ROOT__/application/Yanshi/Dist/js/mobile-select-date.js" ></script>
+<script type="text/javascript">
+Reserve.init();
+var selectDate = new MobileSelectDate();
+// selectDate.init({trigger:'#reserveDayDate',min:'2017/07/20',max:'2027/07/20',position:"bottom", clickBtn:'#reserveDay'});
+selectDate.init({trigger:'#reserveDayDate',min:'2017/07/20',max:'2027/07/20',position:"bottom"});
+</script>
+</html>

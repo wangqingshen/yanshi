@@ -1,0 +1,48 @@
+<tc_include file="Common:head" />
+<body class="ys-coupon">
+<div class="aui-tab" id="tab">
+    <div class="aui-tab-item aui-active">
+        <span>未使用</span>
+    </div>
+     <div class="aui-tab-item">
+        <span>失效券</span>
+    </div>
+</div>
+<div class="copy-item aui-hide">
+    <li class="aui-list-item">
+        <div class="aui-media-list-item-inner">
+            <div class="aui-list-item-media">
+                <div class="coupon-media-info">
+                    <p class="coupon-demonation">￥<span class="voucher_price"></span></p>
+                    <p class="coupon-limit">优惠券</p>
+                </div>
+            </div>
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-text">
+                    <p class="coupon-range"></p>
+                </div>
+                <div class="aui-list-item-text aui-margin-b-5">
+                    <p class="coupon-limit-info">
+                        
+                    </p>
+                </div>
+                <p class="coupon-limit-date-info">
+                    <span class="coupon-limit-date-title aui-margin-r-5">有效期</span>
+                    <span class="coupon-limit-date"><span class="coupon-start-date"></span>至<span class="coupon-end-date"></span></span>
+                </p>
+            </div>
+        </div>   
+    </li>
+</div>
+<div class="aui-content">
+    <ul class="aui-list aui-media-list">
+    </ul>
+</div>
+</body>
+<input type="hidden" value="{$member_id}" name="member_id" />
+<tc_include file="Common:script" />
+<script type="text/javascript" src="__ROOT__/application/Yanshi/Dist/js/aui/aui-tab.js" ></script>
+<script type="text/javascript">
+    Coupon.init();
+</script>
+</html>

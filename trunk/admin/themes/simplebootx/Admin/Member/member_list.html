@@ -1,0 +1,113 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('Member/member_list')}">用户列表</a></li>
+		</ul>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th>微信昵称</th>
+					<th>手机号</th>
+					<th>性别</th>
+					<th>微信openid</th>
+					<th>注册时间</th>
+				</tr>
+			</thead>
+			<tbody>
+				<volist name="member_list" id="member_info">
+				<tr>
+					<td>{$member_info.nick_name}</td>
+					<td>{$member_info.mobile}</td>
+					<if condition="$member_info['sex'] eq 1">
+						<td>男</td>
+						<else/>
+						<td>女</td>
+					</if>
+					<td>{$member_info.wechat_openid}</td>
+					<td>{$member_info.reg_time}</td>
+				</tr>
+				</volist>
+			</tbody>
+		</table>
+		<div class="pagination">{$page_show}</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script src="__PUBLIC__/js/layer/layer.js"></script>
+	<script>
+		$(function () {
+		    /*查询验证*/
+            $('#sub_search').click(function () {
+				if($('#start_reg').val() !== '' && $('#end_reg').val() !== ''){
+					var start_reg = str_to_time($('#start_reg').val()),
+						end_reg = str_to_time($('#end_reg').val());
+					if(start_reg>end_reg){
+					    $('#date_err').html("<span style='color: red'>开始时间不能大于结束时间</span>");
+					    return false;
+					}
+				}
+
+            });
+
+		    /*全选功能*/
+			$('#all_check').click(function () {
+                if($('#all_check').is(':checked')) {
+                    $("input[name='member_checks']").attr("checked","true");
+                }else{
+                    $("input[name='member_checks']").removeAttr("checked");
+                }
+            });
+			/*提交批量状态变更*/
+			$('#submit_batch_stat').click(function () {
+                layer.confirm('是否确认批量修改用户状态？',{btn:['确定','取消']},function () {
+                    var chose_state = $('#select_batch_state').val(),
+                    	member_ids = [];
+                    $("input[name='member_checks']:checkbox[checked]").each(function (k) {
+                        member_ids[k] = $(this).val()
+                    });
+					$.ajax({
+					    url:"{:U('Member/ajax_member_state')}",
+                        type: 'POST',
+						dataType:'json',
+						data:{"member_ids":member_ids,"chose_state":chose_state},
+                        success:function (data) {
+					        if(data.err_code == true){
+					            layer.msg('更新成功',{shift: -1},function () {
+                                    location.reload();
+                                });
+
+							}else if(data.err_code == false){
+                                layer.msg('更新失败');
+							}
+                        }
+                    });
+
+                });
+            });
+        })
+		/*更改用户状态*/
+        function set_member_state(member_id,state) {
+            layer.confirm('是否确认修改用户状态？',{btn:['确定','取消']},function () {
+                $.ajax({
+                    url:"{:U('Member/ajax_member_state')}",
+                    type: 'POST',
+                    dataType:'json',
+                    data:{"member_ids":member_id,"chose_state":state},
+                    success:function (data) {
+                        if(data.err_code == true){
+                            layer.msg('更新成功',{shift: -1},function () {
+                                location.reload();
+                            });
+
+                        }else if(data.err_code == false){
+                            layer.msg('更新失败');
+                        }
+                    }
+                });
+			});
+
+        }
+	</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<div>
+			<form id="goods_form" class="form-horizontal" method="post" action="#">
+				<input type="hidden" id="order_id" value="{$order_id}">
+				<fieldset>
+					<div class="control-group">
+						<label class="control-label">订单当前状态:{$now_state_cn}</label>
+						<label class="control-label">剩余送餐次数:{$delivery_surplus_num}</label>
+					</div>
+					<div class="control-group">
+						<label class="control-label">订单下一状态：</label>
+						<div class="controls">
+							<input id="next_state" type="checkbox" value="{$change_state}" />{$change_state_cn}
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">配送人员：</label>
+						<div class="controls">
+							<input type="text" id="delivery_people" value="" />
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">配送人员联系电话：</label>
+						<div class="controls">
+							<input type="text" id="delivery_contact_mobile" value="" />
+						</div>
+					</div>
+				</fieldset>
+				<div class="form-actions">
+					<button type="button" class="btn btn-primary js-ajax-submit" id="submit_btn">变更订单状态</button>
+				</div>
+
+			</form>
+		</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script src="__PUBLIC__/js/validate.js"></script>
+	<script src="__PUBLIC__/js/layer/layer.js"></script>
+	<script>
+		$(function () {
+			$('#submit_btn').click(function () {
+				var next_state = $('#next_state:checked').val(),
+					order_id = $('#order_id').val(),
+					delivery_people = $('#delivery_people').val(),
+                    delivery_contact_mobile = $('#delivery_contact_mobile').val();
+				if(next_state == undefined){
+				    alert('请选择订单变更状态');
+				    return false;
+				}
+				$.ajax({
+					url:"{:U('Order/change_order_state_post')}",
+					data:{
+					    order_id:order_id,
+						next_state:next_state,
+                        delivery_people:delivery_people,
+                        delivery_contact_mobile:delivery_contact_mobile
+					},
+					type:"post",
+					success:function (data) {
+						if(data.errcode == 1){
+						    alert('变更成功');
+						    window.parent.location.reload();
+						    parent.layer.close();
+						}else{
+						    alert('变更失败');
+						}
+                    }
+				},'json');
+
+            })
+
+		});
+	</script>
+</body>
+</html>

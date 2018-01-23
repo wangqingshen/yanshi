@@ -1,0 +1,238 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('Order/index')}">订单列表</a></li>
+			<li class="active"><a href="#">订单信息</a></li>
+		</ul>
+		<div>
+			<form id="goods_form" class="form-horizontal" method="post" action="#">
+				<fieldset>
+					<div class="control-group">
+						<label class="control-label">订单编号:</label>
+						<div class="controls">
+							{$order_info.order_sn}
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">下单时间:</label>
+						<div class="controls">
+							{$order_info.create_time}
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">支付单编号:</label>
+						<div class="controls">
+							{$order_info.pay_sn}
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">支付时间:</label>
+						<div class="controls">
+							{$order_info.pay_time}
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">订餐人:</label>
+						<div class="controls">
+							{$order_info.receive_name}
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">订餐人联系电话:</label>
+						<div class="controls">
+							{$order_info.receive_mobile}
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">订单剩余次数:</label>
+						<div class="controls">
+							{$order_info.delivery_surplus_num}
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">订单金额:</label>
+						<div class="controls">
+							{$order_info.order_amount}
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">优惠券减免:</label>
+						<div class="controls">
+							{$order_info.voucher_price}
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">送餐按地址:</label>
+						<div class="controls">
+							{$order_info.receive_address}
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">订单备注:</label>
+						<div class="controls">
+							{$order_info.content}
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">订单状态:</label>
+						<div class="controls">
+							{$order_info.order_state_cn}
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">sku商品信息:</label>
+						<div class="controls">
+							<table class="table table-hover table-bordered">
+								<thead>
+								<tr>
+									<th>商品名称</th>
+									<th>商品规格</th>
+									<th>商品价格</th>
+									<th>下单类型</th>
+								</tr>
+								</thead>
+								<tbody>
+									<volist name="order_goods_list" id="order_goods">
+										<tr>
+											<td>
+												<img src="{$order_goods.goods_img}" height="50" width="50" />
+												{$order_goods.spu_name}
+											</td>
+											<td>{$order_goods.sku_spec}</td>
+											<td>{$order_goods.goods_price}</td>
+											<td>{$order_goods.type}</td>
+										</tr>
+									</volist>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label">配送信息:</label>
+						<div class="controls">
+							<table class="table table-hover table-bordered">
+								<thead>
+								<tr>
+									<th>送餐时间</th>
+									<th>送餐人</th>
+									<th>送餐人联系电话</th>
+								</tr>
+								</thead>
+								<tbody>
+								<volist name="delivery_list" id="delivery_info">
+									<tr>
+										<td>{$delivery_info.delivery_time}</td>
+										<td>{$delivery_info.delivery_people}</td>
+										<td>{$delivery_info.delivery_contact_mobile}</td>
+									</tr>
+								</volist>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script src="__PUBLIC__/js/validate.js"></script>
+	<script>
+		$(function () {
+			$("input[name='portion'], input[name='cycle']").on('click', function(){
+				// 移除之前生成好的sku表格
+				$('#sku_table').html('');
+				//判断规格个数
+				var p_len = $("input[name='portion']:checkbox:checked").length;
+				var c_len = $("input[name='cycle']:checkbox:checked").length;
+				//为生成的规格生成sku表格
+				var html = '';
+				if(p_len == 0 || c_len == 0) {
+					console.log('无需操作');
+				}else if (p_len == 1 && c_len == 1) {
+					//规格名称
+					var p_name = $("input[name='portion']:checkbox:checked").val().split('|');
+					var c_name = $("input[name='cycle']:checkbox:checked").val().split('|');
+					var _name = p_name[1] + '|' + c_name[1];
+					html += "<tr>";
+					html += "<td>"+p_name[1]+'&nbsp;&nbsp;&nbsp;&nbsp;'+c_name[1]+"</td>";
+					html += "<td><input type='text' name='spec["+_name+"][]' value='' /></td>";
+					html += "<td><input type='text' name='spec["+_name+"][]' value='' /></td>";
+					html += "<td><input type='text' name='spec["+_name+"][]' value='' /></td>";
+					html += "<td><input style='width: 50px;' type='text' name='spec["+_name+"][]' value='' /></td>";
+					html += "</tr>";
+				}else if(p_len >= 1 || c_len >= 1) {
+					$("input[name='portion']:checkbox:checked").each(function () {
+						var _that = $(this);
+						$("input[name='cycle']:checkbox:checked").each(function () {
+							var _this = $(this);
+							var p_name = _that.val().split('|'),
+								c_name = _this.val().split('|');
+							var _name = p_name[1] + '|' + c_name[1];
+							html += "<tr>";
+							html += "<td>"+p_name[1]+'&nbsp;&nbsp;&nbsp;&nbsp;'+c_name[1]+"</td>";
+							html += "<td><input type='text' name='spec["+_name+"][]' value='' /></td>";
+							html += "<td><input type='text' name='spec["+_name+"][]' value='' /></td>";
+							html += "<td><input type='text' name='spec["+_name+"][]' value='' /></td>";
+							html += "<td><input style='width: 50px;' type='text' name='spec["+_name+"][]' value='' /></td>";
+							html += "</tr>";
+						});
+					});
+				}
+				$('#sku_table').append(html);
+			});
+
+
+			$('input[name="is_recommend"]').change(function () {
+				var check = $(this).val();
+				if(check == 1){
+					$('#div_goods_class').hide();
+				}else if(check == 2){
+					$('#div_goods_class').show();
+				}
+			})
+			$('#goods_form').validate({
+				rules:{
+					goods_name:{
+						required: true,
+						maxlength: 50
+					},
+					select_gooods_class:{
+						required: true
+					},
+					delivery_explain:{
+						required: true,
+						maxlength: 500
+					},
+					goods_img1:{
+						required: true
+					}
+				},
+				messages:{
+					goods_name:{
+						required: "<span style='color: red'>商品名称不能为空</span>",
+						maxlength: "<span style='color: red'>商品名称的最大长度为50字</span>"
+					},
+					select_gooods_class:{
+						required: "<span style='color: red'>请选择商品分类</span>",
+					},
+					delivery_explain:{
+						required: "<span style='color: red'>必须填写送餐说明</span>",
+						maxlength: "<span style='color: red'>送餐说明不得超过500字</span>"
+					},
+					goods_img1:{
+						required: "<span style='color: red'>必须上传商品主图</span>",
+					}
+				}
+			});
+
+			$('#back').click(function () {
+				history.go(-1);
+			});
+
+		});
+	</script>
+</body>
+</html>

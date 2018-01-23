@@ -1,0 +1,64 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('FoodDelivery/delivery_list')}">送餐地点列表</a></li>
+			<li><a href="{:U('FoodDelivery/add_delivery')}">添加送餐地点</a></li>
+		</ul>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>送餐学校</th>
+					<th>取餐点</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<volist name="list" id="vo">
+				<tr>
+					<td>{$vo.id}</td>
+					<td>{$vo.name}</td>
+					<td>{$vo.take_place}</td>
+					<td>
+						<a href="#" onclick="edit_take_place({$vo.id},'{$vo.name}')">编辑</a>
+						<a href="#" onclick="open_add_place({$vo.id},'{$vo.name}')">添加取餐点</a>
+					</td>
+				</tr>
+				</volist>
+			</tbody>
+		</table>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script src="__PUBLIC__/js/layer/layer.js"></script>
+	<script>
+		function open_add_place(d_id,name) {
+			layer.open({
+				type:2,
+				area:['700px','450px'],
+				fixed:false,
+				maxmin:true,
+				content:"{:U('FoodDelivery/add_meal_place')}&d_id="+d_id+'&d_name='+name,
+				cancel:function (index) {
+					layer.close(index);
+					window.location.reload("__URL__");
+				}
+			});
+		}
+		function edit_take_place(d_id,name) {
+			layer.open({
+				type:2,
+				area:['700px','450px'],
+				fixed:false,
+				maxmin:true,
+				content:"{:U('FoodDelivery/edit_meal_place')}&d_id="+d_id+'&d_name='+name,
+				cancel:function (index) {
+					layer.close(index);
+					window.location.reload("__URL__");
+				}
+			});
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<form  class="form-horizontal" method="post" action="{:U('Goods/add_recommend_goods_post')}">
+			<input type="hidden" value="{$spu_id}" name='spu_id' />
+			<table class="table table-hover table-bordered">
+				<thead>
+					<tr>
+						<th>商品名称</th>
+						<th>商品规格</th>
+						<th>送餐次数</th>
+						<th>商品单价区间</th>
+						<th>二人拼团价区间</th>
+						<th>四人拼团价区间</th>
+					</tr>
+				</thead>
+				<tbody>
+					<volist name="sku_list" id="goods_info">
+					<tr>
+						<td>{$goods_info.goods_name}</td>
+						<td>{$goods_info.spec}</td>
+						<td>{$goods_info.delivery_num}</td>
+						<td>{$goods_info.sku_price}</td>
+						<td>{$goods_info.sku_2_price}</td>
+						<td>{$goods_info.sku_4_price}</td>
+					</tr>
+					</volist>
+				</tbody>
+			</table>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script src="__PUBLIC__/js/layer/layer.js"></script>
+	<script>
+		$(function () {
+			$("input[name='select_sku[]']").click(function () {
+				var len = $("input[name='select_sku']:checked").length;
+				if(len > 3){
+					alert('一个sku中最多只能选择3种商品进行推荐');
+					return false;
+				}
+			});
+        });
+	</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<tc_include file="Common:head" />
+<body class="ys-shopping-car">
+<div class="aui-content ys-margin-b">
+    <div class="aui-content">
+        <div class="aui-content ys-edit-spcar-container">
+            <div class="ys-edit-spcar-wrap">
+                <!-- <i class="ys-edit-icon"></i> -->
+                <img class="edit-img" src="__ROOT__/application/Yanshi/Dist/images/yanshi/ico_delete.png" width="18" height="18"/>
+                <span class="ys-edit-text" tapmode data-url="{:U('shoppingCar/delete')}">清理购物车</span>
+            </div>
+        </div>
+        <div class="copy-item aui-hide" />
+            <li class="aui-list-item">
+                <div class="aui-media-list-item-inner aui-swipe-handle">
+                    <div class="aui-list-item-media">
+                        <input class="aui-radio" type="checkbox" name="itemRadio">
+                        <img src="__ROOT__/application/Yanshi/Dist/images/yanshi/jk-3.jpg" class="good-img">
+                    </div>
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-text">
+                            <div class="aui-list-item-title good-name">冬日非凡系列</div>
+                            <div class="aui-list-item-right">￥<label class="good-price">1080</label></div>
+                        </div>
+                        <div class="aui-list-item-text good-price-area">
+                            大份，14天
+                        </div>
+                        <div class="aui-list-item-text delivery_time">
+                           
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="aui-swipe-btn">
+                    <div class="aui-btn aui-btn-danger">删除</div>
+                </div> -->
+            </li>
+        </div>
+    	<ul class="aui-list aui-media-list good-list">
+
+    	</ul>
+    </div>
+</div>
+<footer id="footer" class="aui-bar aui-bar-tab">
+    <ul class="aui-list aui-media-list">
+        <li class="aui-list-item">
+            <div class="aui-media-list-item-inner">
+                <div class="aui-list-item-media">
+                    <label ><input class="aui-radio" type="checkbox" name="checkAll">全选</label>
+                </div>
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-text">
+                        <div class="aui-list-item-title">
+                            合计<span class="total-pay-text">￥<span class="total-value">0.00</span></span>
+                        </div>
+                        <div class="aui-list-item-right">
+                            <div class="go-pay-btn" data-url="{:U('product/reserve')}">去结算(<span class="pay-num">0</span>)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</footer>
+</body>
+<tc_include file="Common:script" />
+<script type="text/javascript" src="__ROOT__/application/Yanshi/Dist/js/aui/aui-list-swipe.js"></script>
+<script type="text/javascript">
+    Shoppingcar.init(1)
+</script>
+</html>

@@ -1,0 +1,100 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('Order/index')}">订单列表</a></li>
+		</ul>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th></th>
+					<th>订单编号</th>
+					<th>收餐人手机</th>
+					<th>订单状态</th>
+					<th>订单类型</th>
+					<th>下单时间</th>
+					<th>送餐时间段</th>
+					<th>下一次送餐日期</th>
+					<th>剩余送餐次数</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<volist name="order_list" id="order_info">
+				<tr>
+					<td><input name="select_order" type="checkbox" value="{$order_info.order_id}"/></td>
+					<td>{$order_info.order_sn}</td>
+					<td>{$order_info.receive_mobile}</td>
+					<td>
+						<if condition="($order_info.order_state eq 2) OR ($order_info.order_state eq 3) OR ($order_info.order_state eq 4) OR ($order_info.order_state eq 8) " >
+							<a href="#" onclick="change_order_state({$order_info.order_id},{$order_info.order_state})">{$order_info.state}</a>
+						<else />
+							{$order_info.state}
+						</if>
+					</td>
+					<td>{$order_info.order_type_cn}</td>
+					<td>{$order_info.create_time}</td>
+					<td>{$order_info.delivery_time}</td>
+					<td>{$order_info.delivery_date}</td>
+					<td>{$order_info.delivery_surplus_num}</td>
+					<td>
+						<span><a href="{:U('Order/order_info')}&order_id={$order_info.order_id}">订单详情</a></span>
+					</td>
+				</tr>
+				</volist>
+			</tbody>
+		</table>
+		<div>
+			<input type="button" id="button_batch_order_state" value="变更状态">
+			<input type="button" id="today_down" value="当日订单下载">
+			<input type="button" id="today_amount_down" value="当日配送金额下载">
+		</div>
+
+		<div class="pagination">{$page_show}</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script src="__PUBLIC__/js/layer/layer.js"></script>
+	<script>
+		function change_order_state(order_id,now_state){
+			var url = "{:U('Order/change_order_state')}&order_id="+order_id+"&now_state="+now_state;
+			layer.open({
+				type:2,
+				title:"订单状态变更",
+				area:['700px','450px'],
+				fixed:false,
+				maxmin:true,
+				content:url
+			});
+		}
+        $(function () {
+            $('#today_amount_down').click(function () {
+                location.href = "{:U('Order/export_today_amount')}";
+            });
+            $('#button_batch_order_state').click(function () {
+                var order_ids="";
+                $("input[name='select_order']:checked").each(function(){
+                    order_ids+=$(this).val()+','
+                });
+                if(order_ids == ''){
+                    alert('请选择订单');
+                    return false;
+				}
+                var url = "{:U('Order/batch_change_order_state')}&order_ids="+order_ids;
+                layer.open({
+                    type:2,
+                    title:"订单状态变更",
+                    area:['700px','450px'],
+                    fixed:false,
+                    maxmin:true,
+                    content:url
+                });
+            });
+
+            $('#today_down').click(function(){
+            	location.href = "{:U('Order/export_today_order_excel')}";
+            });
+		})
+	</script>
+</body>
+</html>

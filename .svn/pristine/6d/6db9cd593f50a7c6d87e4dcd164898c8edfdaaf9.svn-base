@@ -1,0 +1,29 @@
+<?php
+/**
+ * 功能描述：api配置项
+ * 日期: 2017/5/16
+ * 创建人: risoli
+ */
+
+return array(
+    'GOODS_CLASS_NAME' => array(
+        1=>'健身餐',
+        2=>'健康餐',
+        3=>'沙拉',
+        4=>'饮品',
+        5=>'零食',
+    ),
+    /*订单状态*/
+    'ORDER_STATE_CN' => array(
+        1   => '待付款',
+        2   => '已付款',
+        3   => '配送中',
+        4   => '已送达',
+        5  => '交易完成'
+    ),
+    /*微信支付配置*/
+    'WECHAT_APPID' => 'wx6cbe2d9fa1dc1274',
+    'WECHAT_MCHID' => '1323123001',
+    'WECHAT_KEY' => '477640480e13a6cec8fecc20d121e7dc',
+    'WECHAT_APPSECRET' => 'bc47e8d2869e8d6f997c1939dbbdb810',
+);

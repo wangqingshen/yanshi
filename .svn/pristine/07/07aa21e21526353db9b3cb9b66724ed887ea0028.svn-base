@@ -1,0 +1,95 @@
+<tc_include file="Common:head" />
+<body class="ys-edit-address">
+<div class="aui-content aui-margin-t-15">
+     <ul class="aui-list aui-list-in">
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                   订餐人
+                </div>
+                <div class="aui-list-item-input">
+                    <input type="text" placeholder="姓名" name="add-name">
+                     <div class="input-del-wrapper aui-margin-r-15">
+                        <img src="__ROOT__/application/Yanshi/Dist/images/yanshi/ico_delete_forms.png" class="input-del-icon"/>
+                    </div>
+                </div>
+            </div>
+        </li>
+         <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                手机
+                </div>
+                <div class="aui-list-item-input">
+                    <input type="tel" placeholder="手机号码" maxlength="11" name="add-tel">
+                    <!--  <div class="input-del-wrapper aui-margin-r-15">
+                        <img src="__ROOT__/application/Yanshi/Dist/images/yanshi/ico_delete_forms.png" class="input-del-icon"/>
+                    </div> -->
+                </div>
+            </div>
+        </li>
+    </ul>
+    <ul class="aui-list aui-media-list"> 
+        <li class="aui-list-item">
+            <div class="aui-media-list-item-inner">
+                <div class="aui-list-item-media">
+                    送餐学校
+                </div>
+                <div class="aui-list-item-inner aui-list-item-arrow">
+                    <div class="aui-list-item-text">
+                        <div class="aui-list-item-title">
+                        </div>
+                        <div class="aui-list-item-right" style="max-width: 100%;">
+                            <span class="select-sc-address">请选择</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item" style="border-bottom: 1px solid #eee;">
+            <div class="aui-media-list-item-inner">
+                <div class="aui-list-item-media">
+                    取餐地址
+                </div>
+                <div class="aui-list-item-inner aui-list-item-arrow">
+                    <div class="aui-list-item-text">
+                        <div class="aui-list-item-title" style="max-width: 100%;">
+                        </div>
+                        <div class="aui-list-item-right">
+                            <span class="select-qc-address">请选择</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item address-textarea" style="border-top: 0;">
+            <div class="aui-media-list-item-inner">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-text">
+                        <div class="aui-list-item-title">详细地址</div>
+                    </div>
+                    <div class="aui-list-item-text">
+                        <div class="f-textarea">
+                            <textarea name="" id="" placeholder="请输入内容"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-media-list-item-inner">
+                <label class="select-default-label"><input class="aui-radio" type="checkbox" name="is-default">设为默认送餐地址</label>
+            </div>
+        </li>
+    </ul>
+     <div class="add-address-wrapper">
+        <button>保存</button>
+    </div>
+</div>
+</body>
+<tc_include file="Common:script" />
+<script type="text/javascript">
+    var addressUrl = ["{:U('address/index')}", "{:U('address/oaddress')}"];
+    EditAddress.init();
+</script>
+</html>

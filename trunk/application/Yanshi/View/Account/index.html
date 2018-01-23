@@ -1,0 +1,91 @@
+<tc_include file="Common:head" />
+<body class="ys-myaccount">
+<input type="hidden" name="ys-url" value="__ROOT__/application/Yanshi/Dist/images/yanshi/">
+<div class="aui-content aui-margin-b-15 ys-my-header">
+	<img src="__ROOT__/application/Yanshi/Dist/images/yanshi/bg_me.png" />
+	<span class="logo-inner">
+        <img src="__ROOT__/application/Yanshi/Dist/images/yanshi/my-logo.jpg" class="user-logo" />
+    </span>
+    <div class="user-info"><span class="user-no"></span><span class="user-sex"><img src="" class="lady-img"/></span></div>
+</div>
+<div class="aui-content ys-margin-b-40">
+	<ul class="aui-list aui-list-in">
+        <li class="aui-list-item">
+            <div class="aui-list-item-label-icon">
+                <img src="__ROOT__/application/Yanshi/Dist/images/yanshi/ico_address.png" />
+            </div>
+            <div class="aui-list-item-inner aui-list-item-arrow">
+       			送餐地址
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-label-icon">
+                <img src="__ROOT__/application/Yanshi/Dist/images/yanshi/ico_cart_me.png" />
+            </div>
+            <div class="aui-list-item-inner aui-list-item-arrow">
+       			我的购物车
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-label-icon">
+                <img src="__ROOT__/application/Yanshi/Dist/images/yanshi/ico_coupon_me.png" />
+                
+            </div>
+            <div class="aui-list-item-inner aui-list-item-arrow">
+       			优惠券
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-label-icon">
+               	<img src="__ROOT__/application/Yanshi/Dist/images/yanshi/ico_refund_me.png" />
+                
+            </div>
+            <div class="aui-list-item-inner aui-list-item-arrow">
+       			申请退款
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-label-icon">
+                <img src="__ROOT__/application/Yanshi/Dist/images/yanshi/ico_contact_me.png" />
+                
+            </div>
+            <div class="aui-list-item-inner aui-list-item-arrow">
+       			<a href="tel://028-67273707" style="color: #333;">联系我们</a>
+            </div>
+        </li>
+    </ul>
+</div>
+<tc_include file="Common:script" />
+<tc_include file="Common:footer2" />
+</body>
+<script type="text/javascript">
+    Account.init();
+    $(function(){
+        var jumpUrl = '';
+        $('.aui-list .aui-list-item:not(:last-child)').click(function(){
+            switch($(this).index()) {
+                case 0: 
+                    jumpUrl = "{:U('address/index')}";
+                    break;
+                case 1:
+                    jumpUrl = "{:U('shoppingCar/index')}";
+                    break;
+                case 2:
+                    jumpUrl = "{:U('coupon/index')}";
+                    break;
+                 case 3:
+                    jumpUrl = "{:U('refund/index')}";
+                    break;
+                 default:
+                   break;
+            }
+            window.location.href = jumpUrl;
+       });
+
+        // 编辑用户信息跳转
+        $('.user-logo').click(function(){
+             window.location.href = "{:U('account/edit')}";
+        });
+    })
+</script>
+</html>
